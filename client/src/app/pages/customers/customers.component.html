@@ -1,0 +1,44 @@
+<section class="list-page">
+  <div class="list-head">
+    <div>
+      <h1>Customers</h1>
+      <p>Total Records: {{ totalRecords }}</p>
+    </div>
+    <form class="search" (ngSubmit)="load(true)">
+      <input name="search" [(ngModel)]="search" placeholder="Search customer">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <div class="spinner" *ngIf="loading">Loading...</div>
+  <p class="error" *ngIf="error">{{ error }}</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Customer Name</th>
+          <th>Contact Person</th>
+          <th>Mobile</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers">
+          <td>{{ customer.customerId }}</td>
+          <td>{{ customer.customerName }}</td>
+          <td>{{ customer.contactPerson }}</td>
+          <td>{{ customer.mobile }}</td>
+          <td>{{ customer.email }}</td>
+          <td>{{ customer.address }}</td>
+          <td><span class="badge" [class.off]="!customer.status">{{ customer.status ? 'Active' : 'Inactive' }}</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="load-more" type="button" *ngIf="hasMore()" [disabled]="loading" (click)="loadMore()">Load More</button>
+</section>

@@ -1,0 +1,14 @@
+<section class="form-page">
+  <div class="panel">
+    <h1>User Login</h1>
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <label>User Name <input formControlName="userName" placeholder="johnsmith"></label>
+      <label>Password <input type="password" formControlName="password" placeholder="Password@123"></label>
+
+      <p class="error" *ngIf="error">{{ error }}</p>
+
+      <button type="submit" [disabled]="loading">{{ loading ? 'Signing in...' : 'Login' }}</button>
+      <a routerLink="/register">Create a new account</a>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/CustomerService/">
+    <Project Path="src/CustomerService/CustomerService.Api/CustomerService.Api.csproj" />
+    <Project Path="src/CustomerService/CustomerService.Application/CustomerService.Application.csproj" />
+    <Project Path="src/CustomerService/CustomerService.Domain/CustomerService.Domain.csproj" />
+    <Project Path="src/CustomerService/CustomerService.Infrastructure/CustomerService.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/UserService/">
+    <Project Path="src/UserService/UserService.Api/UserService.Api.csproj" />
+    <Project Path="src/UserService/UserService.Application/UserService.Application.csproj" />
+    <Project Path="src/UserService/UserService.Domain/UserService.Domain.csproj" />
+    <Project Path="src/UserService/UserService.Infrastructure/UserService.Infrastructure.csproj" />
+  </Folder>
+</Solution>

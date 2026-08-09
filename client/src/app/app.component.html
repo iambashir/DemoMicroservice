@@ -1,0 +1,14 @@
+<header class="topbar">
+  <a class="brand" routerLink="/customers">Customer Management System</a>
+  <nav>
+    <a routerLink="/register" routerLinkActive="active">Registration</a>
+    <a routerLink="/login" routerLinkActive="active" *ngIf="!isLoggedIn()">Login</a>
+    <a routerLink="/customers" routerLinkActive="active" *ngIf="isLoggedIn()">Customers</a>
+    <a routerLink="/change-password" routerLinkActive="active" *ngIf="isLoggedIn()">Change Password</a>
+    <button type="button" *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+  </nav>
+</header>
+
+<main class="shell">
+  <router-outlet></router-outlet>
+</main>
