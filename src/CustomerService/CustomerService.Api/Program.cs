@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseUrls("http://localhost:5002");
 var jwtKey = builder.Configuration["Jwt:Key"]!;
 
 builder.Services.AddControllers();

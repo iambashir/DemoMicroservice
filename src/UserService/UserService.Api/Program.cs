@@ -11,6 +11,7 @@ using UserService.Infrastructure.Repositories;
 using UserService.Infrastructure.Security;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.UseUrls("http://localhost:5001");
 var jwtKey = builder.Configuration["Jwt:Key"]!;
 
 builder.Services.AddControllers();
