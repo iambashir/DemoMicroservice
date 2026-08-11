@@ -1,0 +1,19 @@
+<nav class="topbar">
+  <a class="brand" routerLink="/customers">Customer Management</a>
+  <div class="nav-links" *ngIf="loggedIn$ | async; else guestLinks">
+    <span class="welcome">Hi, {{ authService.getFullName() || authService.getUserName() }}</span>
+    <a routerLink="/customers" routerLinkActive="active">Customers</a>
+    <a routerLink="/change-password" routerLinkActive="active">Change Password</a>
+    <button type="button" class="logout" (click)="logout()">Logout</button>
+  </div>
+  <ng-template #guestLinks>
+    <div class="nav-links">
+      <a routerLink="/register" routerLinkActive="active">Register</a>
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+    </div>
+  </ng-template>
+</nav>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

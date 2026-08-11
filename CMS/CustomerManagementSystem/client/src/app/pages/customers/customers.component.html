@@ -1,0 +1,60 @@
+<section class="page-shell">
+  <div class="page-header">
+    <div>
+      <h1>Customers</h1>
+      <p>{{ totalRecords }} records found</p>
+    </div>
+    <form class="search-box" (ngSubmit)="onSearch()">
+      <input name="search" [(ngModel)]="search" aria-label="Search customers" />
+      <button class="btn" type="submit" [disabled]="loading">Search</button>
+    </form>
+  </div>
+
+  <div class="alert error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+  <div class="panel table-panel">
+    <div class="loader-row" *ngIf="loading && customers.length === 0">
+      <span class="spinner"></span>
+      Loading customers
+    </div>
+
+    <div class="empty-state" *ngIf="!loading && customers.length === 0">
+      No customers found.
+    </div>
+
+    <div class="table-wrap" *ngIf="customers.length > 0">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Customer Name</th>
+            <th>Contact Person</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customers">
+            <td>{{ customer.customerId }}</td>
+            <td>{{ customer.customerName }}</td>
+            <td>{{ customer.contactPerson }}</td>
+            <td>{{ customer.mobile }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.address }}</td>
+            <td><span class="badge" [class.inactive]="!customer.status">{{ customer.status ? 'Active' : 'Inactive' }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="load-more-row" *ngIf="customers.length > 0">
+    <button class="btn secondary" type="button" (click)="loadMore()" [disabled]="loading" *ngIf="hasMore">
+      <span class="spinner" *ngIf="loading"></span>
+      Load More
+    </button>
+    <span class="all-loaded" *ngIf="!hasMore">All customers loaded.</span>
+  </div>
+</section>

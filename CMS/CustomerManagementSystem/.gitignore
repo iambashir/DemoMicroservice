@@ -1,0 +1,15 @@
+bin/
+obj/
+.vs/
+.vscode/.ropeproject
+node_modules/
+.angular/
+dist/
+coverage/
+TestResults/
+*.user
+*.suo
+*.log
+*.db
+*.sqlite
+*.bak

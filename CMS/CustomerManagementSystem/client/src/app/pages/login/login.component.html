@@ -1,0 +1,10 @@
+<section class="panel form-panel">
+  <h1 class="form-title">Login</h1>
+  <p class="form-subtitle">Use your registered account to access customers.</p>
+  <div class="alert error" *ngIf="errorMessage">{{ errorMessage }}</div>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="field"><label>Username</label><input formControlName="userName" /><span class="error" *ngIf="form.get('userName')?.touched && form.get('userName')?.hasError('required')">Username is required.</span></div>
+    <div class="field"><label>Password</label><input type="password" formControlName="password" /><span class="error" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">Password must be at least 8 characters.</span></div>
+    <button class="btn" type="submit" [disabled]="loading"><span class="spinner" *ngIf="loading"></span>Login</button>
+  </form>
+</section>

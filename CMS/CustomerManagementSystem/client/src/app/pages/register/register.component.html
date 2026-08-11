@@ -1,0 +1,15 @@
+<section class="panel form-panel">
+  <h1 class="form-title">Create Account</h1>
+  <p class="form-subtitle">Register a secure user account for the exam flow.</p>
+  <div class="alert success" *ngIf="successMessage">{{ successMessage }}</div>
+  <div class="alert error" *ngIf="errorMessage">{{ errorMessage }}</div>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="field"><label>Full Name</label><input formControlName="fullName" /><span class="error" *ngIf="form.get('fullName')?.touched && form.get('fullName')?.hasError('required')">Full name is required.</span></div>
+    <div class="field"><label>Email</label><input formControlName="email" /><span class="error" *ngIf="form.get('email')?.touched && form.get('email')?.invalid">Valid email is required.</span></div>
+    <div class="field"><label>Mobile</label><input formControlName="mobile" /><span class="error" *ngIf="form.get('mobile')?.touched && form.get('mobile')?.hasError('required')">Mobile is required.</span></div>
+    <div class="field"><label>Username</label><input formControlName="userName" /><span class="error" *ngIf="form.get('userName')?.touched && form.get('userName')?.hasError('required')">Username is required.</span></div>
+    <div class="field"><label>Password</label><input type="password" formControlName="password" /><span class="error" *ngIf="form.get('password')?.touched && form.get('password')?.invalid">Password must be at least 8 characters.</span></div>
+    <div class="field"><label>Confirm Password</label><input type="password" formControlName="confirmPassword" /><span class="error" *ngIf="form.touched && form.hasError('passwordMismatch')">Passwords must match.</span></div>
+    <button class="btn" type="submit" [disabled]="loading"><span class="spinner" *ngIf="loading"></span>Register</button>
+  </form>
+</section>
